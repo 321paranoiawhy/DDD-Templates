@@ -1,0 +1,49 @@
+# 登录注册相关接口
+# 支持手机号和邮箱两种方式注册和登录
+
+@baseURL = http://localhost:1234/api/v1
+
+### Sign up/Register
+### 注册
+POST {{baseURL}}/register
+Accept: application/json
+Content-Type: application/json
+
+# a -> @, A -> &, S/s -> $, O/o -> 0, G -> 6
+# password -> p@$$w0rd
+{
+  "email": "paranoiawhy@gmail.com",
+  "password": "p@$$w0rd"
+}
+
+### Login/Sign in
+### 登录
+POST {{baseURL}}/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "accessToken": "access token",
+  "refreshToken": "refresh token"
+}
+
+> {% client.global.set("auth_token", response.body.accessToken); %}
+
+### Forget password
+### 忘记密码
+POST {{baseURL}}/forget_password
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+### Logout/Sign out
+### 退出登录
+POST {{baseURL}}/logout
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+### Account cancellation
+### 注销账号
+DELETE {{baseURL}}/account-cancellation
+Accept: application/json
+Authorization: Bearer {{auth_token}}

@@ -1,0 +1,7 @@
+@baseURL = http://localhost:1234/api/v1
+
+### File upload 文件上传
+POST {{baseURL}}/fileUpload
+
+### Static file 静态文件, 也可使用 OSS
+POST {{baseURL}}/assets/README.txt

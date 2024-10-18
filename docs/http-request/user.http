@@ -1,0 +1,45 @@
+@baseURL = http://localhost:1234/api/v1
+
+### Get all users
+### 获取所有用户
+GET {{baseURL}}/users
+Accept: application/json
+
+### Get users by pagination
+### 分页获取用户列表
+GET {{baseURL}}/users?page=1&page_size=20
+Accept: application/json
+
+### Get a user by id
+### 获取指定 id 用户
+GET {{baseURL}}/users
+Accept: application/json
+
+### Add a user
+### 新增用户
+POST  {{baseURL}}/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "admin",
+  "age": 18
+}
+
+### Update a user by id
+### 更新用户信息
+@update_with_user_id=1
+PUT  {{baseURL}}/users/{{update_with_user_id}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "admin",
+  "age": 20
+}
+
+### Delete a user by id
+### 删除指定 id 用户
+@delete_with_user_id=1
+DELETE {{baseURL}}/users/{{delete_with_user_id}}
+Accept: application/json
